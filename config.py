@@ -4,6 +4,8 @@ EMBED_MODEL = "BAAI/bge-small-en-v1.5"
 
 QDRANT_PATH = "./rag/qdrant_db"
 
+COLLECTION_NAME = "genesis_knowledge"
+
 TOP_K = 5
 
 OLLAMA_URL = "http://localhost:11434"

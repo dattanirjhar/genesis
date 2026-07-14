@@ -7,3 +7,6 @@ requests
 pydantic
 rich
 pathlib
+qdrant-client
+sentence-transformers
+torch
