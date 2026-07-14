@@ -30,15 +30,13 @@ import logging
 import re
 from pathlib import Path
 
+from config import KNOWLEDGE_DIR, NORMALIZED_DIR
 from llm.client import chat
 
 logger = logging.getLogger(__name__)
 
-# Paths resolved relative to the project root, so behaviour does not depend on
-# the process's current working directory.
-ROOT = Path(__file__).resolve().parent.parent
-NORMALIZED_DIR = ROOT / "data" / "normalized"
-FINDINGS_DIR = ROOT / "knowledge" / "findings"
+# Local alias kept for callers/tests that reference FINDINGS_DIR.
+FINDINGS_DIR = KNOWLEDGE_DIR
 
 # Characters allowed in a derived filename. finding_id is a canonical identifier
 # and may legitimately contain URL characters (":", "/"), so it must be

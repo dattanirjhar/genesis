@@ -30,7 +30,7 @@ _ID_NAMESPACE = uuid.uuid5(uuid.NAMESPACE_DNS, "genesis.pentest.local")
 @lru_cache(maxsize=1)
 def get_client() -> QdrantClient:
     """Open the embedded Qdrant database once and reuse it (holds a file lock)."""
-    return QdrantClient(path=QDRANT_PATH)
+    return QdrantClient(path=str(QDRANT_PATH))
 
 
 def _point_id(chunk_id: str) -> str:

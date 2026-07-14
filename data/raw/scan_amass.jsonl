@@ -1,0 +1,6 @@
+{"name":"www.corp.local","domain":"corp.local","addresses":[{"ip":"172.16.10.15"}],"tag":"dns","sources":["DNS","crt.sh"]}
+{"name":"vpn.corp.local","domain":"corp.local","addresses":[{"ip":"172.16.10.50"}],"tag":"cert","sources":["Censys"]}
+{"name":"git.corp.local","domain":"corp.local","addresses":[{"ip":"172.16.10.16"}],"tag":"dns","sources":["crt.sh"]}
+{"name":"mail.corp.local","domain":"corp.local","addresses":[{"ip":"172.16.10.25"}],"tag":"dns","sources":["DNS"]}
+{"name":"dev.corp.local","domain":"corp.local","addresses":[{"ip":"172.16.10.17"}],"tag":"cert","sources":["Censys","crt.sh"]}
+{"name":"jenkins.corp.local","domain":"corp.local","addresses":[{"ip":"172.16.10.30"}],"tag":"dns","sources":["crt.sh"]}

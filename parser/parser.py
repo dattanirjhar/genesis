@@ -18,11 +18,11 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from config import NORMALIZED_DIR, RAW_DIR
 from parser.detector import detect_tool
 
-ROOT = Path(__file__).resolve().parent.parent
-RAW_DIR = ROOT / "data" / "raw"
-OUT_DIR = ROOT / "data" / "normalized"
+# Local alias kept for back-compatibility with callers that reference OUT_DIR.
+OUT_DIR = NORMALIZED_DIR
 
 
 def parse_file(path: str | Path) -> dict:

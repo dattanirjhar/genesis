@@ -18,8 +18,9 @@ from __future__ import annotations
 
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
-FINDINGS_DIR = ROOT / "knowledge" / "findings"
+from config import KNOWLEDGE_DIR, ROOT
+
+FINDINGS_DIR = KNOWLEDGE_DIR
 
 
 def parse_frontmatter(markdown: str) -> tuple[dict, str]:
