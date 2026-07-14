@@ -70,6 +70,15 @@ class LLMClient:
     ) -> str:
         """Send one prompt and return the model's reply as plain text.
 
+        Preferred usage:
+
+            chat(prompt=json_data, task="knowledge")
+
+            chat(prompt=rag_context_and_question, task="reasoning")
+
+        Workers should identify themselves by `task` rather than manually loading
+        or composing prompt files.
+
         Prompt composition is centralized here. Workers pass a `task` name and
         the client loads and composes system.md + <task>.md for them, so no
         worker ever concatenates prompts or reads prompt files.
