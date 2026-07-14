@@ -9,8 +9,8 @@ commentary. (Identity and safety rules are already established — apply them.)
 You receive exactly ONE finding as a JSON object. It may contain any of these
 fields (some may be missing):
 
-  finding_id, host, port, service, scanner, tool, severity, cve, name,
-  description, evidence, banner, product, version, state, raw, timestamp
+  finding_id, host, port, protocol, service, scanner, tool, severity, cve,
+  name, description, evidence, banner, product, version, state, raw, timestamp
 
 # Output
 
