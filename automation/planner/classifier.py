@@ -56,6 +56,15 @@ def hostname(target: str) -> str:
     return t.split("/")[0]
 
 
+def is_ip(target: str) -> bool:
+    """True if the target's host is a raw IP address (no DNS name)."""
+    try:
+        ipaddress.ip_address(hostname(target))
+        return True
+    except ValueError:
+        return False
+
+
 def registered_domain(target: str) -> str | None:
     """Best-effort registered domain from a target.
 
@@ -83,6 +92,10 @@ def seed_signals(target: str, scope: str = "targeted") -> set[str]:
     kind = classify(target)
     seeds = set(_SEEDS.get(kind, {S.ASSET_HOST}))
     if scope in ("full", "recon") and kind in ("url", "domain"):
+        # Full scope also port-scans the host (naabu -> nmap). Subdomain
+        # enumeration (subfinder/amass) only applies when there is a real
+        # registered domain — a raw IP has no subdomains.
+        seeds.add(S.ASSET_HOST)
         if registered_domain(target):
             seeds.add(S.ASSET_DOMAIN)
     return seeds

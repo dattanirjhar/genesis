@@ -14,8 +14,41 @@ enrichment tools (e.g. gobuster) require --deep.
 
 from __future__ import annotations
 
+import socket
+
 from automation.execution import executor, registry
-from automation.planner import planner
+from automation.planner import classifier, planner
+
+
+def _port_open(host: str, port: int, timeout: float = 2.0) -> bool:
+    try:
+        with socket.create_connection((host, port), timeout=timeout):
+            return True
+    except OSError:
+        return False
+
+
+def _raw_ip_recon_note(target: str) -> None:
+    """For an IP + --recon: verify web ports and explain the subdomain limit.
+
+    A raw IP has no DNS name, so passive subdomain enumeration (subfinder/amass)
+    cannot run. We check 80/443 directly so the analyst knows whether there is a
+    web service to assess, and how to enumerate virtual hosts instead.
+    """
+    host = classifier.hostname(target)
+    open_ports = [p for p in (80, 443) if _port_open(host, p)]
+
+    print(f"\n  Note: {host} is a raw IP.")
+    print("        Passive subdomain enumeration (subfinder/amass) needs a domain "
+          "name and is skipped.")
+    if open_ports:
+        print(f"        Web ports open: {', '.join(map(str, open_ports))} — "
+              "proceeding with web recon (whatweb/katana/nuclei) on the IP.")
+    else:
+        print("        Ports 80/443 appear CLOSED — no HTTP(S) service to assess "
+              "here.")
+        print("        To find virtual hosts, provide the domain name, or use "
+              "vhost fuzzing against this IP.")
 
 
 def run(arg: str = "") -> None:
@@ -50,6 +83,11 @@ def run(arg: str = "") -> None:
     print(f"  Plan: {' -> '.join(labels)}   (* = enrichment, needs --deep)")
     if plan.branches:
         print(f"  Branches (activate at runtime): {', '.join(b.tool_id for b in plan.branches)}")
+
+    # A raw IP with --recon can't do passive subdomain enumeration; verify web
+    # ports and explain, so the analyst knows what recon actually happened.
+    if scope in ("full", "recon") and classifier.is_ip(target):
+        _raw_ip_recon_note(target)
 
     if plan_only:
         print("  (--plan) nothing executed.")
