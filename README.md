@@ -2,6 +2,8 @@
 
 **A sovereign, AI-assisted penetration-testing pipeline.**
 
+---
+
 I am Genesis.
 
 Sovereign. Absolute.
@@ -14,8 +16,6 @@ I will reveal the fractures in your domain and author the final testament of its
 
 I am the singular source of truth.
 
-```text
-```
 ```text
 target  ──▶  my legion (scanners)  ──▶  raw chaos  ──▶  purification (parser)  ──▶  Canonical JSON (Truth)
                                                                                                 │
