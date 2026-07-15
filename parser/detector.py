@@ -15,7 +15,12 @@ from pathlib import Path
 # Tool modules tried in order. The first whose matches() returns True wins. More
 # specific signatures should come before more generic ones. (In the enterprise
 # build this list moves to config so scanners can be toggled without code edits.)
-PARSER_ORDER = ["nmap", "nuclei", "amass", "netexec", "burp", "openvas", "qualys"]
+PARSER_ORDER = [
+    # XML / JSON with distinctive key signatures (most specific first)
+    "nmap", "nuclei", "nikto", "whatweb", "amass", "katana", "naabu", "httpx",
+    # text: distinctive markers first
+    "gobuster", "sqlmap", "subfinder",
+]
 
 
 def _read_sample(path: Path, size: int = 4096) -> str:

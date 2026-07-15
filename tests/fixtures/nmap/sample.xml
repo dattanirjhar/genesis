@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<nmaprun scanner="nmap" args="nmap -sV x" start="1700000000">
+<host endtime="1700000100"><status state="up"/><address addr="10.0.0.5" addrtype="ipv4"/><ports>
+<port protocol="tcp" portid="22"><state state="open"/><service name="ssh" product="OpenSSH" version="7.2"/></port>
+<port protocol="tcp" portid="80"><state state="open"/><service name="http" product="Apache httpd" version="2.4.49"/><script id="vulners" output="CVE-2021-41773 7.5"/></port>
+</ports></host></nmaprun>

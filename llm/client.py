@@ -17,6 +17,8 @@ changes.
 
 from __future__ import annotations
 
+import time
+
 import requests
 
 from config import DEFAULT_TEMPERATURE, MODEL_NAME, OLLAMA_URL, TASK_TEMPERATURE
@@ -25,6 +27,10 @@ from utils.prompt_loader import build_system
 # How long to wait on the model server before giving up (seconds). A cold 7B
 # on CPU can be slow on the first token, so this is generous.
 DEFAULT_TIMEOUT = 300
+
+# Retry transient connection/timeout failures with linear backoff.
+MAX_RETRIES = 3
+RETRY_BACKOFF = 2.0
 
 
 class LLMError(RuntimeError):
@@ -123,22 +129,31 @@ class LLMClient:
         }
 
         # --- send + handle errors ------------------------------------------
-        try:
-            resp = requests.post(
-                f"{self.base_url}/api/chat",
-                json=payload,
-                timeout=self.timeout,
-            )
-        except requests.Timeout as exc:
+        # Transient connection/timeout blips (a busy or briefly-restarting Ollama)
+        # are retried with backoff, so one hiccup never permanently drops a call.
+        resp = None
+        last_exc: Exception | None = None
+        for attempt in range(MAX_RETRIES):
+            try:
+                resp = requests.post(
+                    f"{self.base_url}/api/chat",
+                    json=payload,
+                    timeout=self.timeout,
+                )
+                break
+            except (requests.ConnectionError, requests.Timeout) as exc:
+                last_exc = exc
+                if attempt < MAX_RETRIES - 1:
+                    time.sleep(RETRY_BACKOFF * (attempt + 1))
+                    continue
+            except requests.RequestException as exc:
+                raise LLMError(f"Request to model server failed: {exc}") from exc
+
+        if resp is None:
             raise LLMError(
-                f"Model server timed out after {self.timeout}s at {self.base_url}."
-            ) from exc
-        except requests.ConnectionError as exc:
-            raise LLMError(
-                f"Could not reach model server at {self.base_url}. Is Ollama running?"
-            ) from exc
-        except requests.RequestException as exc:
-            raise LLMError(f"Request to model server failed: {exc}") from exc
+                f"Could not reach model server at {self.base_url} after "
+                f"{MAX_RETRIES} attempts. Is Ollama running?"
+            ) from last_exc
 
         if resp.status_code != 200:
             raise LLMError(

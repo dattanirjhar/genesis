@@ -1,0 +1,2 @@
+www.x.com
+api.x.com

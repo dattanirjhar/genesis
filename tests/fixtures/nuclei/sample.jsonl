@@ -1,0 +1,1 @@
+{"template-id": "git-config", "info": {"name": "Exposed .git", "severity": "medium", "classification": {"cve-id": []}}, "host": "http://10.0.0.5", "matched-at": "http://10.0.0.5/.git/config", "type": "http"}

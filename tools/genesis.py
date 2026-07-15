@@ -8,15 +8,18 @@ with a COMMANDS dict — nothing here changes except the import list.
 
     Genesis> help
 
-Build:    parser  knowledge  chunk  embed  index  rebuild
+Ingest:   ingest   (data/raw -> parser -> knowledge -> embedding; no scanners)
+Stages:   parser  knowledge  chunk  embed  index
 Inspect:  show  stats  list  inspect <id>  inspect-json [stem]
           inspect-chunk <id>  inspect-vector <id>
 Query:    search <text>        reason <question>
+Output:   report [md|docx]
 Manage:   clean  quit
 
 Run:
     python -m tools.genesis            # start the console
     python -m tools.genesis show       # run one command and exit
+    python -m tools.genesis ingest     # ingest data/raw and exit
     python tools/genesis.py
 """
 
@@ -31,34 +34,44 @@ from llm.client import is_available  # noqa: E402
 from tools.commands import (  # noqa: E402
     chunk,
     clean,
+    doctor,
     embed,
     index,
+    ingest,
     inspect,
     knowledge,
     parser,
     reason,
-    rebuild,
+    report,
+    run,
+    scan,
     search,
     show,
     stats,
+    status,
 )
 
 # Merge every command module's COMMANDS into one registry. genesis stays pure
 # dispatch; each module owns its command(s).
 _MODULES = [
-    parser, knowledge, chunk, embed, index, rebuild,
-    show, stats, inspect, search, reason, clean,
+    doctor, run, scan, parser, knowledge, chunk, embed, index, ingest,
+    status, show, stats, inspect, search, reason, report, clean,
 ]
 REGISTRY: dict = {}
 for _module in _MODULES:
     REGISTRY.update(_module.COMMANDS)
 
-HELP = """Commands
-  Build:    parser  knowledge  chunk  embed  index  rebuild
-  Inspect:  show  stats  list  inspect <id>  inspect-json [stem]
-            inspect-chunk <id>  inspect-vector <id>
-  Query:    search <text>       reason <question>
-  Manage:   clean  help  quit"""
+HELP = """Commands  (workflow: run <target> -> reason -> report)
+  Preflight: doctor
+  One-shot:  run <target> [--deep] [--yes]   (scan -> ingest -> status)
+  Scan:      scan <target> [--deep] [--yes] [--plan]
+  Ingest:    ingest   (data/raw -> parser -> knowledge -> embedding)
+  Stages:    parser  knowledge  chunk  embed  index
+  Inspect:   status  show  stats  list  inspect <id>  inspect-json [stem]
+             inspect-chunk <id>  inspect-vector <id>
+  Query:     search <text>       reason <question>
+  Output:    report [md|docx]
+  Manage:    clean  help  quit"""
 
 
 def dispatch(line: str) -> bool:

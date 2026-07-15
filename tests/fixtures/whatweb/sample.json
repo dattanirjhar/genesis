@@ -1,0 +1,1 @@
+[{"target": "http://site/", "http_status": 200, "plugins": {"nginx": {"version": ["1.19.0"]}, "PHP": {"version": ["5.6"]}, "Title": {"string": ["Home"]}}}]

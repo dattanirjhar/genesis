@@ -17,8 +17,13 @@ from tools.commands._common import print_hits
 
 def run(arg: str) -> None:
     if not arg:
-        print("  usage: reason <question>")
-        return
+        try:
+            arg = input("  Question > ").strip()
+        except (EOFError, KeyboardInterrupt):
+            print()
+            return
+        if not arg:
+            return
 
     hits = vsearch.search(arg, top_k=TOP_K)
     print("\n--- Retrieval (before the LLM) ---")

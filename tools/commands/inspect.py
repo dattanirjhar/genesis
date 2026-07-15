@@ -7,17 +7,53 @@ browsing the filesystem.
 
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
-from embeddings import chunker, embed
+from config import COLLECTION_NAME
+from embeddings import chunker, embed, index
 from llm import knowledge_builder as kb
-from tools.commands._common import FINDINGS_DIR, NORMALIZED_DIR, find_chunk
+from tools.commands._common import FINDINGS_DIR, NORMALIZED_DIR, RAW_DIR, find_chunk
+
+
+def _flow() -> None:
+    """Visualize how data moved through the pipeline, per producing tool."""
+    raw = len([p for p in RAW_DIR.glob("*") if p.is_file()])
+    per_tool: dict[str, int] = {}
+    for doc in sorted(NORMALIZED_DIR.glob("*.json")):
+        try:
+            data = json.loads(doc.read_text())
+        except (ValueError, OSError):
+            continue
+        tool = data.get("scan", {}).get("detected_tool", doc.stem)
+        per_tool[tool] = per_tool.get(tool, 0) + len(data.get("findings", []))
+
+    knowledge = len(list(FINDINGS_DIR.glob("*.md")))
+    client = index.get_client()
+    vectors = (client.get_collection(COLLECTION_NAME).points_count
+               if client.collection_exists(COLLECTION_NAME) else 0)
+
+    print("\nPipeline flow\n-------------")
+    print(f"  data/raw            {raw} file(s)")
+    print("       |  parser")
+    if per_tool:
+        for tool, n in sorted(per_tool.items(), key=lambda kv: -kv[1]):
+            print(f"       +-- {tool:<12} {n} finding(s)")
+    else:
+        print("       (nothing parsed — run `ingest`)")
+    print("       |  knowledge builder")
+    print(f"  knowledge/findings  {knowledge} markdown")
+    print("       |  embed + index")
+    print(f"  qdrant              {vectors} vector(s)")
+    if per_tool and knowledge != sum(per_tool.values()):
+        print(f"\n  note: {sum(per_tool.values())} parsed findings but {knowledge} "
+              f"markdown — some findings failed to build (check `ingest` output).")
 
 
 def inspect(arg: str) -> None:
-    """Show a finding's Markdown and parsed metadata by finding_id."""
+    """A finding by id, or the whole pipeline flow when called bare."""
     if not arg:
-        print("  usage: inspect <finding_id>   (see `list`)")
+        _flow()
         return
     path = FINDINGS_DIR / f"{kb._safe_filename(arg)}.md"
     if not path.exists():
