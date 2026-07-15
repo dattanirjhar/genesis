@@ -20,6 +20,21 @@ from automation.execution.tools import resolve
 from config import EXECUTION_DIR, RAW_DIR
 
 
+def _target_for(tool: Tool, target: str) -> str:
+    """Give each tool the target form it expects.
+
+    subfinder/amass want a registered domain; nmap/naabu want a bare host; web
+    tools take the URL as given. Without this, a URL target would be handed to
+    subfinder verbatim (which needs a domain).
+    """
+    from automation.planner import classifier
+    if tool.id in ("subfinder", "amass"):
+        return classifier.registered_domain(target) or classifier.hostname(target)
+    if tool.id in ("nmap", "naabu"):
+        return classifier.hostname(target)
+    return target
+
+
 def _log_run(tool: Tool, target: str, argv: list[str], started: str,
              exit_code: int, stdout: str, stderr: str, outputs: list[str]) -> str:
     """Write an auditable execution record to execution/scan_NNN.json."""
@@ -49,7 +64,7 @@ def execute(tool: Tool, target: str, dry_run: bool = True, approve: bool = False
     status is one of: dry-run | needs-approval | not-installed | ok | error.
     """
     RAW_DIR.mkdir(parents=True, exist_ok=True)
-    argv = tool.command(target)
+    argv = tool.command(_target_for(tool, target))
     # Rewrite argv[0] to the resolved absolute path so the correct binary runs
     # (e.g. ProjectDiscovery httpx, not the venv's Python httpx CLI).
     binary = resolve(tool.id)

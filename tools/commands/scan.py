@@ -21,20 +21,26 @@ from automation.planner import planner
 def run(arg: str = "") -> None:
     parts = arg.split()
     if not parts:
-        print("  usage: scan <target> [--deep] [--yes] [--plan]")
-        print("    --deep  include enrichment tools (gobuster)")
-        print("    --yes   include intrusive tools (nuclei, sqlmap)")
-        print("    --plan  show the plan without running anything")
+        print("  usage: scan <target> [--recon] [--deep] [--yes] [--plan]")
+        print("    --recon  full web footprint (subfinder/amass/httpx on the domain)")
+        print("    --deep   include enrichment tools (gobuster)")
+        print("    --yes    include intrusive tools (nuclei, sqlmap)")
+        print("    --plan   show the plan without running anything")
         return
 
     target = parts[0]
     approve = "--yes" in parts
     deep = "--deep" in parts
     plan_only = "--plan" in parts
+    scope = "full" if ("--recon" in parts or "--full" in parts) else "targeted"
+    if "--scope" in parts:
+        i = parts.index("--scope")
+        if i + 1 < len(parts):
+            scope = parts[i + 1]
 
     tools = registry.all_tools()
-    plan = planner.build_plan(target)
-    print(f"  Target: {target}   (classified: {plan.kind})")
+    plan = planner.build_plan(target, scope=scope)
+    print(f"  Target: {target}   (classified: {plan.kind}, scope: {plan.scope})")
     if not plan.steps:
         print("  No runnable tools for this target.")
         return

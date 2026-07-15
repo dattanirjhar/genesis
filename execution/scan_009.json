@@ -1,0 +1,18 @@
+{
+  "tool": "nmap",
+  "target": "http://testaspnet.vulnweb.com/",
+  "command": "/opt/homebrew/bin/nmap -sV --script vulners -oX /Users/thejester/PENTEST_AI_PROTO/data/raw/scan_nmap.xml testaspnet.vulnweb.com",
+  "started": "2026-07-15T15:21:56",
+  "finished": "2026-07-15T15:25:13",
+  "exit_code": 0,
+  "stdout_size": 744,
+  "stderr_size": 0,
+  "stdout": "Starting Nmap 7.99 ( https://nmap.org ) at 2026-07-15 15:21 +0530\nNmap scan report for testaspnet.vulnweb.com (44.238.29.244)\nHost is up (0.30s latency).\nrDNS record for 44.238.29.244: ec2-44-238-29-244.us-west-2.compute.amazonaws.com\nNot shown: 999 filtered tcp ports (no-response)\nPORT   STATE SERVICE VERSION\n80/tcp open  http    Microsoft IIS httpd 8.5\n|_http-server-header: Microsoft-IIS/8.5\n| vulners: \n|   cpe:/a:microsoft:internet_information_services:8.5: \n|_    \tCVE-2014-4078\t5.1\thttps://vulners.com/cve/CVE-2014-4078\nService Info: OS: Windows; CPE: cpe:/o:microsoft:windows\n\nService detection performed. Please report any incorrect results at https://nmap.org/submit/ .\nNmap done: 1 IP address (1 host up) scanned in 197.58 seconds\n",
+  "stderr": "",
+  "artifacts": [
+    "/Users/thejester/PENTEST_AI_PROTO/data/raw/scan_nmap.xml"
+  ],
+  "signals_produced": [
+    "network.service"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "scan": {
+    "tool": "katana",
+    "scanner": "katana",
+    "args": "",
+    "started": "unknown",
+    "raw_file": "/Users/thejester/PENTEST_AI_PROTO/data/raw/scan_katana.jsonl",
+    "detected_tool": "katana"
+  },
+  "hosts": [
+    {
+      "host": "testaspnet.vulnweb.com",
+      "hostnames": [
+        "testaspnet.vulnweb.com"
+      ],
+      "state": "up"
+    }
+  ],
+  "findings": [
+    {
+      "finding_id": "katana-testaspnet.vulnweb.com",
+      "host": "testaspnet.vulnweb.com",
+      "port": null,
+      "protocol": "",
+      "service": "http",
+      "scanner": "katana",
+      "tool": "katana",
+      "severity": "informational",
+      "cve": "none",
+      "name": "Discovered 14 endpoint(s) on testaspnet.vulnweb.com",
+      "description": "Katana crawled 14 endpoint(s) on testaspnet.vulnweb.com.",
+      "evidence": "- http://testaspnet.vulnweb.com/\n- http://testaspnet.vulnweb.com/styles.css\n- http://testaspnet.vulnweb.com/default.aspx\n- http://testaspnet.vulnweb.com/ReadNews.aspx?id=2&NewsAd=ads/def.html\n- http://testaspnet.vulnweb.com/Signup.aspx\n- http://testaspnet.vulnweb.com/ReadNews.aspx?id=3&NewsAd=ads/def.html\n- http://testaspnet.vulnweb.com/ads/def.html\n- http://testaspnet.vulnweb.com/login.aspx\n- http://testaspnet.vulnweb.com/about.aspx\n- http://testaspnet.vulnweb.com/rssFeed.aspx\n- http://testaspnet.vulnweb.com/Comments.aspx?id=3\n- http://testaspnet.vulnweb.com/ReadNews.aspx?id=3\n- http://testaspnet.vulnweb.com/Comments.aspx?id=2\n- http://testaspnet.vulnweb.com/ReadNews.aspx?id=2",
+      "banner": "",
+      "product": "",
+      "version": "",
+      "state": "",
+      "validated": false,
+      "timestamp": "unknown"
+    }
+  ]
+}

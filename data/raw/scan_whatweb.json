@@ -1,0 +1,3 @@
+[
+{"target":"http://testaspnet.vulnweb.com/","http_status":200,"request_config":{"headers":{"User-Agent":"WhatWeb/0.6.4"}},"plugins":{"ASP_NET":{"version":["2.0.50727"]},"Cookies":{"string":["ASP.NET_SessionId"]},"Country":{"string":["UNITED STATES"],"module":["US"]},"HTTPServer":{"string":["Microsoft-IIS/8.5"]},"HttpOnly":{"string":["ASP.NET_SessionId"]},"IP":{"string":["44.238.29.244"]},"MetaGenerator":{"string":["Microsoft Visual Studio .NET 7.1"]},"Microsoft-IIS":{"version":["8.5"]},"Title":{"string":["acublog news"]},"X-Powered-By":{"string":["ASP.NET"]}}}
+]

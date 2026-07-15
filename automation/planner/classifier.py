@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import ipaddress
 import re
+from urllib.parse import urlparse
 
 from automation.execution import signals as S
 
@@ -47,6 +48,41 @@ def classify(target: str) -> str:
     return "unknown"
 
 
-def seed_signals(target: str) -> set[str]:
-    """Initial signals a target provides, to prime the planner's graph."""
-    return set(_SEEDS.get(classify(target), {S.ASSET_HOST}))
+def hostname(target: str) -> str:
+    """The bare hostname/IP of a target (strips scheme and path)."""
+    t = target.strip()
+    if "://" in t:
+        return urlparse(t).hostname or t
+    return t.split("/")[0]
+
+
+def registered_domain(target: str) -> str | None:
+    """Best-effort registered domain from a target.
+
+    Naive last-two-labels heuristic (vulnweb.com from testaspnet.vulnweb.com).
+    Good enough for engagement scoping; multi-part TLDs like co.uk are not
+    handled without a public-suffix list.
+    """
+    host = hostname(target)
+    try:
+        ipaddress.ip_address(host)
+        return None  # an IP has no registered domain
+    except ValueError:
+        pass
+    labels = host.split(".")
+    return ".".join(labels[-2:]) if len(labels) >= 2 else None
+
+
+def seed_signals(target: str, scope: str = "targeted") -> set[str]:
+    """Initial signals a target provides, to prime the planner's graph.
+
+    scope="full" (or "recon") expands a URL/domain engagement to the whole web
+    footprint by also seeding asset.domain, which makes subfinder/amass/httpx
+    reachable. scope="targeted" (default) keeps a URL to just that application.
+    """
+    kind = classify(target)
+    seeds = set(_SEEDS.get(kind, {S.ASSET_HOST}))
+    if scope in ("full", "recon") and kind in ("url", "domain"):
+        if registered_domain(target):
+            seeds.add(S.ASSET_DOMAIN)
+    return seeds

@@ -1,0 +1,554 @@
+{
+  "scan": {
+    "tool": "subfinder",
+    "scanner": "subfinder",
+    "args": "",
+    "started": "unknown",
+    "raw_file": "/Users/thejester/PENTEST_AI_PROTO/data/raw/scan_subfinder.txt",
+    "detected_tool": "subfinder"
+  },
+  "hosts": [
+    {
+      "host": "testhtml5.vulnweb.com",
+      "hostnames": [
+        "testhtml5.vulnweb.com"
+      ],
+      "state": "unknown"
+    },
+    {
+      "host": "odincovo.vulnweb.com",
+      "hostnames": [
+        "odincovo.vulnweb.com"
+      ],
+      "state": "unknown"
+    },
+    {
+      "host": "php.vulnweb.com",
+      "hostnames": [
+        "php.vulnweb.com"
+      ],
+      "state": "unknown"
+    },
+    {
+      "host": "phptest.vulnweb.com",
+      "hostnames": [
+        "phptest.vulnweb.com"
+      ],
+      "state": "unknown"
+    },
+    {
+      "host": "testasp.vulnweb.com",
+      "hostnames": [
+        "testasp.vulnweb.com"
+      ],
+      "state": "unknown"
+    },
+    {
+      "host": "testhmtml5.vulnweb.com",
+      "hostnames": [
+        "testhmtml5.vulnweb.com"
+      ],
+      "state": "unknown"
+    },
+    {
+      "host": "testphp.vulnweb.com",
+      "hostnames": [
+        "testphp.vulnweb.com"
+      ],
+      "state": "unknown"
+    },
+    {
+      "host": "u003etestasp.vulnweb.com",
+      "hostnames": [
+        "u003etestasp.vulnweb.com"
+      ],
+      "state": "unknown"
+    },
+    {
+      "host": "tetphp.vulnweb.com",
+      "hostnames": [
+        "tetphp.vulnweb.com"
+      ],
+      "state": "unknown"
+    },
+    {
+      "host": "virus.vulnweb.com",
+      "hostnames": [
+        "virus.vulnweb.com"
+      ],
+      "state": "unknown"
+    },
+    {
+      "host": "viruswall.vulnweb.com",
+      "hostnames": [
+        "viruswall.vulnweb.com"
+      ],
+      "state": "unknown"
+    },
+    {
+      "host": "antivirus1.vulnweb.com",
+      "hostnames": [
+        "antivirus1.vulnweb.com"
+      ],
+      "state": "unknown"
+    },
+    {
+      "host": "www.vulnweb.com",
+      "hostnames": [
+        "www.vulnweb.com"
+      ],
+      "state": "unknown"
+    },
+    {
+      "host": "www.virus.vulnweb.com",
+      "hostnames": [
+        "www.virus.vulnweb.com"
+      ],
+      "state": "unknown"
+    },
+    {
+      "host": "testaspnet.vulnweb.com",
+      "hostnames": [
+        "testaspnet.vulnweb.com"
+      ],
+      "state": "unknown"
+    },
+    {
+      "host": "testpphp.vulnweb.com",
+      "hostnames": [
+        "testpphp.vulnweb.com"
+      ],
+      "state": "unknown"
+    },
+    {
+      "host": "testsp.vulnweb.com",
+      "hostnames": [
+        "testsp.vulnweb.com"
+      ],
+      "state": "unknown"
+    },
+    {
+      "host": "test.php.vulnweb.com",
+      "hostnames": [
+        "test.php.vulnweb.com"
+      ],
+      "state": "unknown"
+    },
+    {
+      "host": "www.test.php.vulnweb.com",
+      "hostnames": [
+        "www.test.php.vulnweb.com"
+      ],
+      "state": "unknown"
+    },
+    {
+      "host": "rest.vulnweb.com",
+      "hostnames": [
+        "rest.vulnweb.com"
+      ],
+      "state": "unknown"
+    }
+  ],
+  "findings": [
+    {
+      "finding_id": "subfinder-testhtml5.vulnweb.com",
+      "host": "testhtml5.vulnweb.com",
+      "port": null,
+      "protocol": "",
+      "service": "dns",
+      "scanner": "subfinder",
+      "tool": "subfinder",
+      "severity": "informational",
+      "cve": "none",
+      "name": "Discovered subdomain testhtml5.vulnweb.com",
+      "description": "Subdomain testhtml5.vulnweb.com discovered via passive enumeration.",
+      "evidence": "testhtml5.vulnweb.com",
+      "banner": "",
+      "product": "",
+      "version": "",
+      "state": "",
+      "validated": false,
+      "timestamp": "unknown"
+    },
+    {
+      "finding_id": "subfinder-odincovo.vulnweb.com",
+      "host": "odincovo.vulnweb.com",
+      "port": null,
+      "protocol": "",
+      "service": "dns",
+      "scanner": "subfinder",
+      "tool": "subfinder",
+      "severity": "informational",
+      "cve": "none",
+      "name": "Discovered subdomain odincovo.vulnweb.com",
+      "description": "Subdomain odincovo.vulnweb.com discovered via passive enumeration.",
+      "evidence": "odincovo.vulnweb.com",
+      "banner": "",
+      "product": "",
+      "version": "",
+      "state": "",
+      "validated": false,
+      "timestamp": "unknown"
+    },
+    {
+      "finding_id": "subfinder-php.vulnweb.com",
+      "host": "php.vulnweb.com",
+      "port": null,
+      "protocol": "",
+      "service": "dns",
+      "scanner": "subfinder",
+      "tool": "subfinder",
+      "severity": "informational",
+      "cve": "none",
+      "name": "Discovered subdomain php.vulnweb.com",
+      "description": "Subdomain php.vulnweb.com discovered via passive enumeration.",
+      "evidence": "php.vulnweb.com",
+      "banner": "",
+      "product": "",
+      "version": "",
+      "state": "",
+      "validated": false,
+      "timestamp": "unknown"
+    },
+    {
+      "finding_id": "subfinder-phptest.vulnweb.com",
+      "host": "phptest.vulnweb.com",
+      "port": null,
+      "protocol": "",
+      "service": "dns",
+      "scanner": "subfinder",
+      "tool": "subfinder",
+      "severity": "informational",
+      "cve": "none",
+      "name": "Discovered subdomain phptest.vulnweb.com",
+      "description": "Subdomain phptest.vulnweb.com discovered via passive enumeration.",
+      "evidence": "phptest.vulnweb.com",
+      "banner": "",
+      "product": "",
+      "version": "",
+      "state": "",
+      "validated": false,
+      "timestamp": "unknown"
+    },
+    {
+      "finding_id": "subfinder-testasp.vulnweb.com",
+      "host": "testasp.vulnweb.com",
+      "port": null,
+      "protocol": "",
+      "service": "dns",
+      "scanner": "subfinder",
+      "tool": "subfinder",
+      "severity": "informational",
+      "cve": "none",
+      "name": "Discovered subdomain testasp.vulnweb.com",
+      "description": "Subdomain testasp.vulnweb.com discovered via passive enumeration.",
+      "evidence": "testasp.vulnweb.com",
+      "banner": "",
+      "product": "",
+      "version": "",
+      "state": "",
+      "validated": false,
+      "timestamp": "unknown"
+    },
+    {
+      "finding_id": "subfinder-testhmtml5.vulnweb.com",
+      "host": "testhmtml5.vulnweb.com",
+      "port": null,
+      "protocol": "",
+      "service": "dns",
+      "scanner": "subfinder",
+      "tool": "subfinder",
+      "severity": "informational",
+      "cve": "none",
+      "name": "Discovered subdomain testhmtml5.vulnweb.com",
+      "description": "Subdomain testhmtml5.vulnweb.com discovered via passive enumeration.",
+      "evidence": "testhmtml5.vulnweb.com",
+      "banner": "",
+      "product": "",
+      "version": "",
+      "state": "",
+      "validated": false,
+      "timestamp": "unknown"
+    },
+    {
+      "finding_id": "subfinder-testphp.vulnweb.com",
+      "host": "testphp.vulnweb.com",
+      "port": null,
+      "protocol": "",
+      "service": "dns",
+      "scanner": "subfinder",
+      "tool": "subfinder",
+      "severity": "informational",
+      "cve": "none",
+      "name": "Discovered subdomain testphp.vulnweb.com",
+      "description": "Subdomain testphp.vulnweb.com discovered via passive enumeration.",
+      "evidence": "testphp.vulnweb.com",
+      "banner": "",
+      "product": "",
+      "version": "",
+      "state": "",
+      "validated": false,
+      "timestamp": "unknown"
+    },
+    {
+      "finding_id": "subfinder-u003etestasp.vulnweb.com",
+      "host": "u003etestasp.vulnweb.com",
+      "port": null,
+      "protocol": "",
+      "service": "dns",
+      "scanner": "subfinder",
+      "tool": "subfinder",
+      "severity": "informational",
+      "cve": "none",
+      "name": "Discovered subdomain u003etestasp.vulnweb.com",
+      "description": "Subdomain u003etestasp.vulnweb.com discovered via passive enumeration.",
+      "evidence": "u003etestasp.vulnweb.com",
+      "banner": "",
+      "product": "",
+      "version": "",
+      "state": "",
+      "validated": false,
+      "timestamp": "unknown"
+    },
+    {
+      "finding_id": "subfinder-tetphp.vulnweb.com",
+      "host": "tetphp.vulnweb.com",
+      "port": null,
+      "protocol": "",
+      "service": "dns",
+      "scanner": "subfinder",
+      "tool": "subfinder",
+      "severity": "informational",
+      "cve": "none",
+      "name": "Discovered subdomain tetphp.vulnweb.com",
+      "description": "Subdomain tetphp.vulnweb.com discovered via passive enumeration.",
+      "evidence": "tetphp.vulnweb.com",
+      "banner": "",
+      "product": "",
+      "version": "",
+      "state": "",
+      "validated": false,
+      "timestamp": "unknown"
+    },
+    {
+      "finding_id": "subfinder-virus.vulnweb.com",
+      "host": "virus.vulnweb.com",
+      "port": null,
+      "protocol": "",
+      "service": "dns",
+      "scanner": "subfinder",
+      "tool": "subfinder",
+      "severity": "informational",
+      "cve": "none",
+      "name": "Discovered subdomain virus.vulnweb.com",
+      "description": "Subdomain virus.vulnweb.com discovered via passive enumeration.",
+      "evidence": "virus.vulnweb.com",
+      "banner": "",
+      "product": "",
+      "version": "",
+      "state": "",
+      "validated": false,
+      "timestamp": "unknown"
+    },
+    {
+      "finding_id": "subfinder-viruswall.vulnweb.com",
+      "host": "viruswall.vulnweb.com",
+      "port": null,
+      "protocol": "",
+      "service": "dns",
+      "scanner": "subfinder",
+      "tool": "subfinder",
+      "severity": "informational",
+      "cve": "none",
+      "name": "Discovered subdomain viruswall.vulnweb.com",
+      "description": "Subdomain viruswall.vulnweb.com discovered via passive enumeration.",
+      "evidence": "viruswall.vulnweb.com",
+      "banner": "",
+      "product": "",
+      "version": "",
+      "state": "",
+      "validated": false,
+      "timestamp": "unknown"
+    },
+    {
+      "finding_id": "subfinder-antivirus1.vulnweb.com",
+      "host": "antivirus1.vulnweb.com",
+      "port": null,
+      "protocol": "",
+      "service": "dns",
+      "scanner": "subfinder",
+      "tool": "subfinder",
+      "severity": "informational",
+      "cve": "none",
+      "name": "Discovered subdomain antivirus1.vulnweb.com",
+      "description": "Subdomain antivirus1.vulnweb.com discovered via passive enumeration.",
+      "evidence": "antivirus1.vulnweb.com",
+      "banner": "",
+      "product": "",
+      "version": "",
+      "state": "",
+      "validated": false,
+      "timestamp": "unknown"
+    },
+    {
+      "finding_id": "subfinder-www.vulnweb.com",
+      "host": "www.vulnweb.com",
+      "port": null,
+      "protocol": "",
+      "service": "dns",
+      "scanner": "subfinder",
+      "tool": "subfinder",
+      "severity": "informational",
+      "cve": "none",
+      "name": "Discovered subdomain www.vulnweb.com",
+      "description": "Subdomain www.vulnweb.com discovered via passive enumeration.",
+      "evidence": "www.vulnweb.com",
+      "banner": "",
+      "product": "",
+      "version": "",
+      "state": "",
+      "validated": false,
+      "timestamp": "unknown"
+    },
+    {
+      "finding_id": "subfinder-www.virus.vulnweb.com",
+      "host": "www.virus.vulnweb.com",
+      "port": null,
+      "protocol": "",
+      "service": "dns",
+      "scanner": "subfinder",
+      "tool": "subfinder",
+      "severity": "informational",
+      "cve": "none",
+      "name": "Discovered subdomain www.virus.vulnweb.com",
+      "description": "Subdomain www.virus.vulnweb.com discovered via passive enumeration.",
+      "evidence": "www.virus.vulnweb.com",
+      "banner": "",
+      "product": "",
+      "version": "",
+      "state": "",
+      "validated": false,
+      "timestamp": "unknown"
+    },
+    {
+      "finding_id": "subfinder-testaspnet.vulnweb.com",
+      "host": "testaspnet.vulnweb.com",
+      "port": null,
+      "protocol": "",
+      "service": "dns",
+      "scanner": "subfinder",
+      "tool": "subfinder",
+      "severity": "informational",
+      "cve": "none",
+      "name": "Discovered subdomain testaspnet.vulnweb.com",
+      "description": "Subdomain testaspnet.vulnweb.com discovered via passive enumeration.",
+      "evidence": "testaspnet.vulnweb.com",
+      "banner": "",
+      "product": "",
+      "version": "",
+      "state": "",
+      "validated": false,
+      "timestamp": "unknown"
+    },
+    {
+      "finding_id": "subfinder-testpphp.vulnweb.com",
+      "host": "testpphp.vulnweb.com",
+      "port": null,
+      "protocol": "",
+      "service": "dns",
+      "scanner": "subfinder",
+      "tool": "subfinder",
+      "severity": "informational",
+      "cve": "none",
+      "name": "Discovered subdomain testpphp.vulnweb.com",
+      "description": "Subdomain testpphp.vulnweb.com discovered via passive enumeration.",
+      "evidence": "testpphp.vulnweb.com",
+      "banner": "",
+      "product": "",
+      "version": "",
+      "state": "",
+      "validated": false,
+      "timestamp": "unknown"
+    },
+    {
+      "finding_id": "subfinder-testsp.vulnweb.com",
+      "host": "testsp.vulnweb.com",
+      "port": null,
+      "protocol": "",
+      "service": "dns",
+      "scanner": "subfinder",
+      "tool": "subfinder",
+      "severity": "informational",
+      "cve": "none",
+      "name": "Discovered subdomain testsp.vulnweb.com",
+      "description": "Subdomain testsp.vulnweb.com discovered via passive enumeration.",
+      "evidence": "testsp.vulnweb.com",
+      "banner": "",
+      "product": "",
+      "version": "",
+      "state": "",
+      "validated": false,
+      "timestamp": "unknown"
+    },
+    {
+      "finding_id": "subfinder-test.php.vulnweb.com",
+      "host": "test.php.vulnweb.com",
+      "port": null,
+      "protocol": "",
+      "service": "dns",
+      "scanner": "subfinder",
+      "tool": "subfinder",
+      "severity": "informational",
+      "cve": "none",
+      "name": "Discovered subdomain test.php.vulnweb.com",
+      "description": "Subdomain test.php.vulnweb.com discovered via passive enumeration.",
+      "evidence": "test.php.vulnweb.com",
+      "banner": "",
+      "product": "",
+      "version": "",
+      "state": "",
+      "validated": false,
+      "timestamp": "unknown"
+    },
+    {
+      "finding_id": "subfinder-www.test.php.vulnweb.com",
+      "host": "www.test.php.vulnweb.com",
+      "port": null,
+      "protocol": "",
+      "service": "dns",
+      "scanner": "subfinder",
+      "tool": "subfinder",
+      "severity": "informational",
+      "cve": "none",
+      "name": "Discovered subdomain www.test.php.vulnweb.com",
+      "description": "Subdomain www.test.php.vulnweb.com discovered via passive enumeration.",
+      "evidence": "www.test.php.vulnweb.com",
+      "banner": "",
+      "product": "",
+      "version": "",
+      "state": "",
+      "validated": false,
+      "timestamp": "unknown"
+    },
+    {
+      "finding_id": "subfinder-rest.vulnweb.com",
+      "host": "rest.vulnweb.com",
+      "port": null,
+      "protocol": "",
+      "service": "dns",
+      "scanner": "subfinder",
+      "tool": "subfinder",
+      "severity": "informational",
+      "cve": "none",
+      "name": "Discovered subdomain rest.vulnweb.com",
+      "description": "Subdomain rest.vulnweb.com discovered via passive enumeration.",
+      "evidence": "rest.vulnweb.com",
+      "banner": "",
+      "product": "",
+      "version": "",
+      "state": "",
+      "validated": false,
+      "timestamp": "unknown"
+    }
+  ]
+}

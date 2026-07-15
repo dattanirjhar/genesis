@@ -66,6 +66,7 @@ class Plan:
     steps: list[PlannedStep]
     branches: list[Branch]
     unreachable: list[Unreachable]
+    scope: str = "targeted"
     graph: KnowledgeGraph = field(default_factory=KnowledgeGraph)
 
 
@@ -74,13 +75,13 @@ def _condition_met(graph: KnowledgeGraph, condition: str) -> bool:
     return graph.has(type_, value)
 
 
-def build_plan(target: str) -> Plan:
+def build_plan(target: str, scope: str = "targeted") -> Plan:
     tools = registry.all_tools()
     order = list(tools.values())  # deterministic registry order
     producers = registry.producers()
 
     graph = KnowledgeGraph()
-    seeds = classifier.seed_signals(target)
+    seeds = classifier.seed_signals(target, scope)
     for seed in seeds:
         graph.add_node(seed)
 
@@ -129,4 +130,4 @@ def build_plan(target: str) -> Plan:
             unreachable.append(Unreachable(tool.id, missing or list(tool.when)))
 
     return Plan(target, classifier.classify(target), seeds,
-                steps, branches, unreachable, graph)
+                steps, branches, unreachable, scope, graph)

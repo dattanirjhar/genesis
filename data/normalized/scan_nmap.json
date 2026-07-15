@@ -1,0 +1,42 @@
+{
+  "scan": {
+    "tool": "nmap",
+    "scanner": "nmap",
+    "args": "/opt/homebrew/bin/nmap -sV --script vulners -oX /Users/thejester/PENTEST_AI_PROTO/data/raw/scan_nmap.xml testaspnet.vulnweb.com",
+    "started": "2026-07-15T09:51:56+00:00",
+    "raw_file": "/Users/thejester/PENTEST_AI_PROTO/data/raw/scan_nmap.xml",
+    "detected_tool": "nmap"
+  },
+  "hosts": [
+    {
+      "host": "44.238.29.244",
+      "hostnames": [
+        "testaspnet.vulnweb.com",
+        "ec2-44-238-29-244.us-west-2.compute.amazonaws.com"
+      ],
+      "state": "up"
+    }
+  ],
+  "findings": [
+    {
+      "finding_id": "nmap-44.238.29.244-tcp-80",
+      "host": "44.238.29.244",
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "scanner": "nmap",
+      "tool": "nmap",
+      "severity": "informational",
+      "cve": "CVE-2014-4078",
+      "name": "Open tcp/80 (http)",
+      "description": "Open tcp port 80 running http on 44.238.29.244 (Microsoft IIS httpd 8.5).",
+      "evidence": "Microsoft IIS httpd 8.5",
+      "banner": "Microsoft IIS httpd 8.5",
+      "product": "Microsoft IIS httpd",
+      "version": "8.5",
+      "state": "open",
+      "validated": false,
+      "timestamp": "2026-07-15T09:55:13+00:00"
+    }
+  ]
+}

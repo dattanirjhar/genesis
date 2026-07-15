@@ -1,7 +1,10 @@
 """
 Command: run — one-shot scan -> ingest -> status.
 
-    Genesis> run http://testphp.vulnweb.com [--deep] [--yes]
+    Genesis> run http://testphp.vulnweb.com [--recon] [--deep] [--yes]
+
+    --recon expands to the full web footprint (subfinder/amass/httpx on the
+    registered domain); default is a targeted assessment of just the URL.
 
 The smooth default path: it scans the target into data/raw, ingests everything
 into knowledge + vectors, and prints status. After it finishes, just ask:
@@ -21,7 +24,7 @@ from tools.commands import status as status_cmd
 
 def run(arg: str = "") -> None:
     if not arg.split():
-        print("  usage: run <target> [--deep] [--yes]")
+        print("  usage: run <target> [--recon] [--deep] [--yes]")
         return
 
     print("== scan ==")

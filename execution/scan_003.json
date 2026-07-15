@@ -1,0 +1,18 @@
+{
+  "tool": "subfinder",
+  "target": "http://testaspnet.vulnweb.com/",
+  "command": "/Users/thejester/go/bin/subfinder -d vulnweb.com -silent -o /Users/thejester/PENTEST_AI_PROTO/data/raw/scan_subfinder.txt",
+  "started": "2026-07-15T15:20:18",
+  "finished": "2026-07-15T15:20:48",
+  "exit_code": 0,
+  "stdout_size": 413,
+  "stderr_size": 0,
+  "stdout": "tetphp.vulnweb.com\nvirus.vulnweb.com\nviruswall.vulnweb.com\nantivirus1.vulnweb.com\nwww.vulnweb.com\nwww.virus.vulnweb.com\ntestaspnet.vulnweb.com\ntestpphp.vulnweb.com\ntestsp.vulnweb.com\ntest.php.vulnweb.com\nwww.test.php.vulnweb.com\nrest.vulnweb.com\ntesthtml5.vulnweb.com\nodincovo.vulnweb.com\nphp.vulnweb.com\nphptest.vulnweb.com\ntestasp.vulnweb.com\ntesthmtml5.vulnweb.com\ntestphp.vulnweb.com\nu003etestasp.vulnweb.com\n",
+  "stderr": "",
+  "artifacts": [
+    "/Users/thejester/PENTEST_AI_PROTO/data/raw/scan_subfinder.txt"
+  ],
+  "signals_produced": [
+    "asset.subdomain"
+  ]
+}

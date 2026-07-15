@@ -1,0 +1,18 @@
+{
+  "tool": "whatweb",
+  "target": "http://testaspnet.vulnweb.com/",
+  "command": "/Users/thejester/WhatWeb/whatweb --log-json /Users/thejester/PENTEST_AI_PROTO/data/raw/scan_whatweb.json http://testaspnet.vulnweb.com/",
+  "started": "2026-07-15T14:32:35",
+  "finished": "2026-07-15T14:32:40",
+  "exit_code": 0,
+  "stdout_size": 543,
+  "stderr_size": 0,
+  "stdout": "\u001b[1m\u001b[34mhttp://testaspnet.vulnweb.com/\u001b[0m [200 OK] \u001b[1mASP_NET\u001b[0m[\u001b[1m\u001b[32m2.0.50727\u001b[0m], \u001b[1mCookies\u001b[0m[\u001b[0m\u001b[22mASP.NET_SessionId\u001b[0m], \u001b[1mCountry\u001b[0m[\u001b[0m\u001b[22mUNITED STATES\u001b[0m][\u001b[1m\u001b[31mUS\u001b[0m], \u001b[1mHTTPServer\u001b[0m[\u001b[1m\u001b[36mMicrosoft-IIS/8.5\u001b[0m], \u001b[1mHttpOnly\u001b[0m[\u001b[0m\u001b[22mASP.NET_SessionId\u001b[0m], \u001b[1mIP\u001b[0m[\u001b[0m\u001b[22m44.238.29.244\u001b[0m], \u001b[1mMetaGenerator\u001b[0m[\u001b[0m\u001b[22mMicrosoft Visual Studio .NET 7.1\u001b[0m], \u001b[1mMicrosoft-IIS\u001b[0m[\u001b[1m\u001b[32m8.5\u001b[0m], \u001b[1mTitle\u001b[0m[\u001b[1m\u001b[33macublog news\u001b[0m], \u001b[1mX-Powered-By\u001b[0m[\u001b[0m\u001b[22mASP.NET\u001b[0m]\n",
+  "stderr": "",
+  "artifacts": [
+    "/Users/thejester/PENTEST_AI_PROTO/data/raw/scan_whatweb.json"
+  ],
+  "signals_produced": [
+    "technology"
+  ]
+}

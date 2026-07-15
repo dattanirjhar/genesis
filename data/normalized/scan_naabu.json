@@ -1,0 +1,39 @@
+{
+  "scan": {
+    "tool": "naabu",
+    "scanner": "naabu",
+    "args": "",
+    "started": "unknown",
+    "raw_file": "/Users/thejester/PENTEST_AI_PROTO/data/raw/scan_naabu.jsonl",
+    "detected_tool": "naabu"
+  },
+  "hosts": [
+    {
+      "host": "testaspnet.vulnweb.com",
+      "hostnames": [],
+      "state": "up"
+    }
+  ],
+  "findings": [
+    {
+      "finding_id": "naabu-testaspnet.vulnweb.com-tcp-80",
+      "host": "testaspnet.vulnweb.com",
+      "port": 80,
+      "protocol": "tcp",
+      "service": "unknown",
+      "scanner": "naabu",
+      "tool": "naabu",
+      "severity": "informational",
+      "cve": "none",
+      "name": "Open tcp/80 on testaspnet.vulnweb.com",
+      "description": "naabu found tcp port 80 open on testaspnet.vulnweb.com.",
+      "evidence": "testaspnet.vulnweb.com:80/tcp",
+      "banner": "",
+      "product": "",
+      "version": "",
+      "state": "",
+      "validated": false,
+      "timestamp": "unknown"
+    }
+  ]
+}
